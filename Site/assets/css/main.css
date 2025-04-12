@@ -110,7 +110,7 @@ h6 {
 }
 
 .php-email-form .loading {
-  display: none;
+  visibility: hidden;
   background: var(--surface-color);
   text-align: center;
   padding: 15px;
@@ -1894,6 +1894,11 @@ section,
 
 .contact .php-email-form button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+.contact .verify-code
+ {
+  letter-spacing: 1rem;
 }
 
 /*--------------------------------------------------------------

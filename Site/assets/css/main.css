@@ -110,7 +110,7 @@ h6 {
 }
 
 .php-email-form .loading {
-  display: none;
+  visibility: hidden;
   background: var(--surface-color);
   text-align: center;
   padding: 15px;
@@ -1846,6 +1846,7 @@ section,
 
 .contact .php-email-form input[type=text],
 .contact .php-email-form input[type=email],
+.contact .php-email-form input[type=password],
 .contact .php-email-form textarea {
   font-size: 14px;
   padding: 10px 15px;
@@ -1856,14 +1857,29 @@ section,
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
 
+
+.contact .php-email-form input[type=checkbox]
+ {
+  box-shadow: none;
+  border-radius: 0;
+}
+
 .contact .php-email-form input[type=text]:focus,
 .contact .php-email-form input[type=email]:focus,
+.contact .php-email-form input[type=password]:focus,
 .contact .php-email-form textarea:focus {
   border-color: var(--accent-color);
 }
 
+.contact .php-email-form input[type=checkbox]
+ {
+  box-shadow: none;
+  border-radius: 0;
+}
+
 .contact .php-email-form input[type=text]::placeholder,
 .contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form input[type=password]::placeholder
 .contact .php-email-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
@@ -1872,13 +1888,18 @@ section,
   color: var(--contrast-color);
   background: var(--accent-color);
   border: 0;
-  padding: 10px 30px 12px 30px;
+  padding: 10px 60px 12px 60px;
   transition: 0.4s;
   border-radius: 50px;
 }
 
 .contact .php-email-form button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+.contact .verify-code
+ {
+  letter-spacing: 1rem;
 }
 
 /*--------------------------------------------------------------

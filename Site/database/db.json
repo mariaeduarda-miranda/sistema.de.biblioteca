@@ -1,0 +1,125 @@
+{
+  "alunos": [
+    {
+      "id": "1",
+      "nome": "Ana Souza",
+      "matricula": "2023001",
+      "email": "ana.souza@email.com",
+      "senha": "ana123"
+    },
+    {
+      "id": "2",
+      "nome": "Bruno Lima",
+      "matricula": "2023002",
+      "email": "bruno.lima@email.com",
+      "senha": "P@ssw0rd!"
+    },
+    {
+      "id": "3",
+      "nome": "Carla Mendes",
+      "matricula": "2023003",
+      "email": "carla.mendes@email.com",
+      "senha": "carla123"
+    },
+    {
+      "id": "4",
+      "nome": "Diego Fernandes",
+      "matricula": "2023004",
+      "email": "diego.fernandes@email.com",
+      "senha": "diego123"
+    },
+    {
+      "id": "5",
+      "nome": "Eduarda Martins",
+      "matricula": "2023005",
+      "email": "eduarda.martins@email.com",
+      "senha": "eduarda123"
+    }
+  ],
+  "livros": [
+    {
+      "id": "101",
+      "titulo": "Dom Casmurro",
+      "autor": "Machado de Assis",
+      "ano": 1899,
+      "genero": "Romance",
+      "editora": "Editora Globo",
+      "disponibilidade": true
+    },
+    {
+      "id": "102",
+      "titulo": "A Revolução dos Bichos",
+      "autor": "George Orwell",
+      "ano": 1945,
+      "genero": "Fábula política",
+      "editora": "Companhia das Letras",
+      "disponibilidade": true
+    },
+    {
+      "id": "103",
+      "titulo": "O Pequeno Príncipe",
+      "autor": "Antoine de Saint-Exupéry",
+      "ano": 1943,
+      "genero": "Ficção",
+      "editora": "Agir",
+      "disponibilidade": false
+    },
+    {
+      "id": "104",
+      "titulo": "1984",
+      "autor": "George Orwell",
+      "ano": 1949,
+      "genero": "Distopia",
+      "editora": "Companhia das Letras",
+      "disponibilidade": true
+    },
+    {
+      "id": "105",
+      "titulo": "Capitães da Areia",
+      "autor": "Jorge Amado",
+      "ano": 1937,
+      "genero": "Ficção",
+      "editora": "Record",
+      "disponibilidade": true
+    },
+    {
+      "id": "106",
+      "titulo": "Harry Potter e a Pedra Filosofal",
+      "autor": "J.K. Rowling",
+      "ano": 1997,
+      "genero": "Fantasia",
+      "editora": "Rocco",
+      "disponibilidade": true
+    }
+  ],
+  "historicos": [
+    {
+      "aluno_id": 1,
+      "livro_id": 101,
+      "data_emprestimo": "2025-03-01",
+      "data_devolucao": "2025-03-15",
+      "id": "ec45"
+    },
+    {
+      "aluno_id": 2,
+      "livro_id": 102,
+      "data_emprestimo": "2025-03-05",
+      "data_devolucao": "2025-03-20",
+      "id": "0d75"
+    },
+    {
+      "aluno_id": 1,
+      "livro_id": 103,
+      "data_emprestimo": "2025-04-01",
+      "data_devolucao": "2025-04-15",
+      "id": "479e"
+    },
+    {
+      "aluno_id": 5,
+      "livro_id": 105,
+      "data_emprestimo": "2025-04-05",
+      "data_devolucao": null,
+      "id": "67f5"
+    }
+  ]
+}

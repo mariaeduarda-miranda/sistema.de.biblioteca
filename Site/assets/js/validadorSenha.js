@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", function() {
     OTPInput();
 });
 
-const emailSection = document.getElementById("emailSection");
-const otpSection = document.getElementById("otpSection");
-const senhaSection = document.getElementById("senhaSection");
-let load = document.getElementById    ("loading");
+const emailSection = document.getElementById("email-section");
+const otpSection = document.getElementById("otp-section");
+const senhaSection = document.getElementById("senha-section");
+let load = document.getElementById("loading");
 let btn = document.getElementById('btn');
 
 async function verificarEmail (){
@@ -47,15 +47,11 @@ async function verificarEmail (){
             alunoAtual = aluno;
             emailSection.style.display = "none";
             otpSection.style.display = "block";
-            document.getElementById("emailCodigo").innerHTML = "Um código foi enviado para o seu email " + aluno.email.slice(0, 8) + "********";
+            document.getElementById("email-enviado").innerHTML = "Um código foi enviado para o seu email " + aluno.email.slice(0, 8) + "********";
             return;
         }
 
     });
-
-    if (alunoAtual != null) {
-        return;
-    }
     
     document.getElementById("error-message").innerHTML = "Não encontramos esse e-mail em nossos registros"
     load.style.visibility = "hidden";
@@ -81,7 +77,7 @@ async function verificarOTP(){
         return;
     } else {
 
-    document.getElementById("error-messageOTP").innerHTML = "Código incorreto. Verifique o código enviado ao seu e-mail e tente novamente."
+    document.getElementById("error-message-otp").innerHTML = "Código incorreto. Verifique o código enviado ao seu e-mail e tente novamente."
     load.style.visibility = "hidden";
     document.getElementById("btn-otp").removeAttribute("disabled");
     }
@@ -90,7 +86,7 @@ async function verificarOTP(){
 
 async function verificarSenha(){
     let senha = document.getElementById('nova-senha');
-    let senhaC = document.getElementById('nova-senha-c');
+    let senhaC = document.getElementById('nova-senha-confirmar');
     const validador = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$/;
 
 
@@ -98,7 +94,7 @@ async function verificarSenha(){
 
         senha.classList.add("is-invalid");
         senhaC.classList.add("is-invalid");
-        document.getElementById("error-messageSenha").innerHTML = " Sua senha deve ter pelo menos 8 caracteres, incluir uma letra maiúscula, uma minúscula, um número e um símbolo especial (como @, #, $, etc)"
+        document.getElementById("error-message-senha").innerHTML = " Sua senha deve ter pelo menos 8 caracteres, incluir uma letra maiúscula, uma minúscula, um número e um símbolo especial (como @, #, $, etc)"
         load.style.visibility = "hidden";
         document.getElementById("btn-otp").removeAttribute("disabled");
 
@@ -106,7 +102,7 @@ async function verificarSenha(){
 
         senha.classList.add("is-invalid");
         senhaC.classList.add("is-invalid");
-        document.getElementById("error-messageSenha").innerHTML = "As senhas não coincidem. Verifique e digite a mesma senha nos dois campos."
+        document.getElementById("error-message-senha").innerHTML = "As senhas não coincidem. Verifique e digite a mesma senha nos dois campos."
         load.style.visibility = "hidden";
         document.getElementById("btn-otp").removeAttribute("disabled");
 

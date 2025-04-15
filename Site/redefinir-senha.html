@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Contact - Mentor Bootstrap Template</title>
+  <title>Redefinir Senha</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -49,14 +49,13 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html" class="active">Início<br></a></li>
-          <li><a href="login.html">Login</a></li>
           <li><a href="catalogodelivros.html">Catálogo de Livros</a></li>
-          <li><a href="alugueldelivros.html">Aluguel de livros</a></li>
+          <li><a href="aluguellivros.html">Livros Alugados</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="catalogodelivros.html">Pronto para se aventurar nesse universo?</a>
+      <a class="btn-getstarted" href="login.html">Login</a>
 
     </div>
   </header>
@@ -64,7 +63,7 @@
   <main class="main">
 
     <!-- Email Section -->
-    <section id="emailSection" class="contact section">
+    <section id="email-section" class="contact section">
 
       <div class="container">
 
@@ -100,7 +99,7 @@
     </section><!-- /Login Section -->
 
     <!-- OTP Section -->
-    <section id="otpSection" class="contact section" style="display: 
+    <section id="otp-section" class="contact section" style="display: 
     none;">
     <div class="container" data-aos="fade-left">
 
@@ -110,7 +109,7 @@
 
               <div>
                   <h2 class="text-center fw-bold mb-1">Código de verificação</h2>
-                  <p class="text-center" id="emailCodigo"></p>
+                  <p class="text-center" id="email-enviado"></p>
               </div>
 
 
@@ -123,7 +122,7 @@
                   <input type="text" id="num5" class="m-2 text-center form-control" maxlength="1" placeholder="0" style="width: 40px; height: 40px;">
                 </div>
               <input type="hidden" class="is-invalid">
-              <span class="invalid-feedback text-start " id="error-messageOTP"></span>
+              <span class="invalid-feedback text-start " id="error-message-otp"></span>
               <div class="col-md-12 text-center">
                 <div class="loading" id="loading-otp">Loading</div>
                 <button type="submit" class="mt-2" id="btn-otp">Avançar</button>
@@ -141,7 +140,7 @@
     <!-- /OTP Section -->
 
     <!-- Mudar-senha Section -->
-      <section id="senhaSection" class="contact section" style="display: 
+      <section id="senha-section" class="contact section" style="display: 
     none;">
       <div class="container" data-aos="fade-left">
 
@@ -159,9 +158,9 @@
               </div>
 
               <div class="mb-2">
-                <label for="nova-senha-c" class="form-label">Confirmar nova senha:</label>
-                <input type="password" id="nova-senha-c" name="nova-senha-c" class="form-control" placeholder="Confirmar nova senha" required="">
-                <span id="error-messageSenha" class="invalid-feedback"></span>
+                <label for="nova-senha-confirmar" class="form-label">Confirmar nova senha:</label>
+                <input type="password" id="nova-senha-confirmar" name="nova-senha-confirmar" class="form-control" placeholder="Confirmar nova senha" required="">
+                <span id="error-message-senha" class="invalid-feedback"></span>
               </div>
 
               <div class="col-md-12 text-center">

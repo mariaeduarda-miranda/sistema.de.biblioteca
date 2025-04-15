@@ -2,8 +2,8 @@ async function validadorLogin(){
 
 let uri = "http://localhost:3000/alunos";
 
-let matricula = document.getElementById("matricula").value;
-let senha = document.getElementById("senha").value;
+let matriculaInput = document.getElementById("matricula").value;
+let senhaInput = document.getElementById("senha").value;
 let matriculaClasse = document.getElementById("matricula").classList;
 let senhaClasse = document.getElementById("senha").classList;
 let erro = document.getElementById("error-message");
@@ -16,12 +16,9 @@ const alunos = await res.json();
 load = "visible";
 btn.setAttribute("disabled","disabled");
 
-console.log(erro);
-
 await alunos.forEach(aluno => {
     
-    if (aluno.matricula == matricula && aluno.senha == senha){
-        console.log(":))))))")
+    if (aluno.matricula == matriculaInput && aluno.senha == senhaInput){
         //window.location.replace("login.html")
     } 
 

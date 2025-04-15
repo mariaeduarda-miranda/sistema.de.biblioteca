@@ -12,7 +12,7 @@
       "nome": "Bruno Lima",
       "matricula": "2023002",
       "email": "bruno.lima@email.com",
-      "senha": "G7p@kz8L"
+      "senha": "P@ssw0rd!"
     },
     {
       "id": "3",
@@ -111,7 +111,7 @@
       "aluno_id": 1,
       "livro_id": 103,
       "data_emprestimo": "2025-04-01",
-      "data_devolucao": null,
+      "data_devolucao": "2025-04-15",
       "id": "479e"
     },
     {

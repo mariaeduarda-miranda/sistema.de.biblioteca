@@ -510,5 +510,6 @@
         }
 
         // Funções globais para chamadas no HTML
-        window.changePage = changePage;
+        // Fim
+        Window.changePage = changePage;
         window.showBookDetails = showBookDetails;

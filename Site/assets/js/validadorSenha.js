@@ -32,7 +32,7 @@ let load = document.getElementById("loading");
 let btn = document.getElementById('btn');
 
 async function verificarEmail (){
-    let uri = "http://localhost:3000/alunos";
+    let uri = "http://127.0.0.1:8000/usuarios";
     let inputEmail = document.getElementById("email").value;
     let inputBorder = document.getElementById("email").classList;
     const res = await fetch(uri);
@@ -41,7 +41,7 @@ async function verificarEmail (){
     load.style.visibility = "visible";
     btn.setAttribute("disabled","disabled");
 
-    await alunos.forEach(aluno => {
+    alunos.forEach(aluno => {
         
         if (aluno.email == inputEmail){
             alunoAtual = aluno;
@@ -62,7 +62,7 @@ async function verificarEmail (){
 
 let otpValidador = "000000";
 
-async function verificarOTP(){
+function verificarOTP(){
     let otp = '';
     document.querySelectorAll('#otp > input').forEach(input => otp += input.value);
     let load = document.getElementById("loading-otp");
@@ -116,10 +116,13 @@ async function verificarSenha(){
             senha: senha.value
         }
         
-        await fetch('http://localhost:3000/alunos/' + alunoAtual.id, {
+        await fetch('http://127.0.0.1:8000/usuarios/' + alunoAtual.id, {
             method: 'PUT',
-            body: JSON.stringify(doc)
-        })
+            headers: {
+                'Content-Type': 'application/json',
+              },
+            body: JSON.stringify(doc),
+        });
         window.location.replace("login.html");
     }
 }

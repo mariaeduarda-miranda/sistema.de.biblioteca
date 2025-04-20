@@ -1,6 +1,6 @@
 async function validadorLogin(){
 
-let uri = "http://localhost:3000/alunos";
+let uri = "http://127.0.0.1:8000/usuarios";
 
 let matriculaInput = document.getElementById("matricula").value;
 let senhaInput = document.getElementById("senha").value;
@@ -16,10 +16,10 @@ const alunos = await res.json();
 load = "visible";
 btn.setAttribute("disabled","disabled");
 
-await alunos.forEach(aluno => {
+alunos.forEach(aluno => {
     
     if (aluno.matricula == matriculaInput && aluno.senha == senhaInput){
-        //window.location.replace("login.html")
+        window.location.replace("catalogo/CatalogoLivros.html")
     } 
 
 });

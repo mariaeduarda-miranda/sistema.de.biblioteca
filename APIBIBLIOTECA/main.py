@@ -70,6 +70,14 @@ def emprestar_livro(emprestimo: EmprestimoSchema, db: Session = Depends(get_db))
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
+@app.get("/emprestimos/{usuario_id}", response_model=List[EmprestimoSchema])
+def listar_emprestimos_por_idusuario(usuario_id: int, db: Session = Depends(get_db)):
+    repo = EmprestimoRepository(db)
+    try:
+        return repo.buscar_por_idusuario(usuario_id)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    
 @app.post("/emprestimos/{emprestimo_id}/devolver", response_model=EmprestimoSchema)
 def devolver_livro(emprestimo_id: int, db: Session = Depends(get_db)):
     repo = EmprestimoRepository(db)

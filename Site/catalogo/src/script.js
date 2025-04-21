@@ -284,5 +284,5 @@
         window.changePage = changePage;
         window.showBookDetails = showBookDetails;
         window.reserveBook = reserveBook;
-    })();
 
+    })();

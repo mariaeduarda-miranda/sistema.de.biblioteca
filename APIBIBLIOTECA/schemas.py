@@ -13,6 +13,7 @@ class LivroSchema(BaseModel):
     descricao: str
     rating: float
     isbn: str
+    quantidade: int
 
     class Config:
         from_attributes = True
@@ -28,10 +29,12 @@ class UsuarioSchema(BaseModel):
     class Config:
         from_attributes = True
 
-
 class EmprestimoSchema(BaseModel):
     livro_id: int
     usuario_id: int
+    devolvido: bool
 
     class Config:
         from_attributes = True
+
+

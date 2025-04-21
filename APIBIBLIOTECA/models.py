@@ -17,6 +17,7 @@ class Livro(Base):
     descricao = Column(String(2000))
     isbn = Column(String(20), unique=True)
     rating = Column(Float)
+    quantidade = Column(Integer)
     disponivel = Column(Boolean, default=True)
     data_cadastro = Column(DateTime, default=datetime.now)
 

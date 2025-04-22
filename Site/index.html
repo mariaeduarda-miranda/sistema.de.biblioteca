@@ -27,6 +27,9 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- style css -->
+   <link rel="stylesheet" href="./catalogo/styles/principal.css">
+
   <!-- =======================================================
   * Template Name: Mentor
   * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
@@ -41,21 +44,97 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+<!--       <a href="index.html" class="logo d-flex align-items-center me-auto">
         
         <h1 class="sitename">Sua Biblioteca</h1>
-      </a>
+      </a> -->
 
-      <nav id="navmenu" class="navmenu">
+<!--       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html" class="active">Início<br></a></li>
-          <li><a href="catalogodelivros.html">Catálogo de Livros</a></li>
+          <li><a href="./catalogo/public/CatalogoLivros.html">Catálogo de Livros</a></li>
           <li><a href="aluguellivros.html">Livros Alugados</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+      </nav> -->
 
-      <a class="btn-getstarted" href="login.html">Login</a>
+<!--       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-book-half"></i> Biblioteca Digital
+            </a>
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../index.html"><i class="bi bi-house-door"></i> Início</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-collection"></i> Categorias
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-filter="all">Todos</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" data-filter="ficcao">Ficção</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="tecnico">Técnico</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="biografia">Biografia</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" id="searchForm">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Buscar..." id="searchInput">
+                        <button class="btn btn-light" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav> -->
+
+    <!-- nav -->
+    <nav id="navmenu" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="bi bi-book-half"></i> Biblioteca Digital
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html"><i class="bi bi-house-door"></i> Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./catalogo/public/CatalogoLivros.html"><i class="bi bi-book"></i> Catálogo de Livros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aluguellivros.html"><i class="bi bi-journal"></i> Livros Alugados</a>
+            </li>
+            <li> 
+              <a class="btn-getstarted" href="login.html">Login</a>
+            </li>
+          </ul>
+          <!-- <form class="d-flex" id="searchForm">
+            <div class="input-group">
+              <input class="form-control" type="search" placeholder="Buscar..." id="searchInput">
+              <button class="btn btn-light" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form> -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- nav -->
+
+<!--       <a class="btn-getstarted" href="login.html">Login</a> -->
 
     </div>
   </header>
@@ -291,7 +370,7 @@
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
-  <div id="preloader"></div>
+  <!-- <div id="preloader"></div> -->
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -302,7 +381,7 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="./assets/js/main.js"></script>
 
 </body>
 

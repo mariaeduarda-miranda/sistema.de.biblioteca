@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Aluguel de Livros - Sua Biblioteca</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="contact-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Sua Biblioteca</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="catalogodelivros.html">Catálogo de Livros</a></li>
+          <li><a href="aluguellivros.html" class="active">Livros Alugados</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="login.html">Login</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header text-center">
+          <h2>Aluguel de Livros</h2>
+          <p>Confira os livros atualmente alugados e o histórico de cada aluno</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header bg-white border-bottom-0">
+            <ul class="nav nav-tabs card-header-tabs" id="tabsLivros" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tab-atual" data-bs-toggle="tab" data-bs-target="#painel-atual" type="button" role="tab">Atual</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab-jaalugados" data-bs-toggle="tab" data-bs-target="#painel-jaalugados" type="button" role="tab">Já Alugados</button>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body tab-content">
+            <!-- Painel de livros atuais -->
+            <div class="tab-pane fade show active" id="painel-atual" role="tabpanel">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="livros-atuais">
+                <!-- Livros atuais serão inseridos aqui -->
+              </div>
+            </div>
+
+            <!-- Painel de histórico de livros -->
+            <div class="tab-pane fade" id="painel-jaalugados" role="tabpanel">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="livros-jaalugados">
+                <!-- Livros já alugados serão inseridos aqui -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    async function fetchRentedBooks() {
+      const token = 'seu_token_de_acesso_aqui'; // Substitua pelo token de acesso do usuário logado
+      const response = await fetch('/rented_books/', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const rentedBooks = await response.json();
+      const currentBooksList = document.getElementById('livros-atuais');
+      const pastBooksList = document.getElementById('livros-jaalugados');
+
+      rentedBooks.forEach(book => {
+        const listItem = document.createElement('div');
+        listItem.className = 'col';
+        listItem.innerHTML = `
+          <div class="card h-100 text-center border">
+            <div class="card-body">
+              <h5 class="card-title">${book.title}</h5>
+              <p class="card-text">Aluno: ${book.user.username}</p>
+            </div>
+          </div>
+        `;
+        if (book.is_current) {
+          currentBooksList.appendChild(listItem);
+        } else {
+          pastBooksList.appendChild(listItem);
+        }
+      });
+    }
+
+    fetchRentedBooks();
+  </script>
+</body>
+
+</html>

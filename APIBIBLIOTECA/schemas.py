@@ -30,8 +30,8 @@ class UsuarioSchema(BaseModel):
         from_attributes = True
 
 class EmprestimoSchema(BaseModel):
-    livro_id: int
     usuario_id: int
+    livro_id: int
     devolvido: bool
 
     class Config:

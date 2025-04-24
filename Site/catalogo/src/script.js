@@ -98,20 +98,20 @@
                         <div class="card-body">
                             <h5 class="card-title">${book.titulo}</h5>
                             <p class="card-text text-muted">${book.autor}</p>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="badge bg-primary">${getGenreName(book.genero)}</span>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-primary">${getGenreName(book.genero)}</span>
                                 <small class="text-muted">${book.ano}</small>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-sm btn-outline-primary" onclick="showBookDetails(${book.id})">
-                                    <i class="bi bi-info-circle"></i> Detalhes
-                                </button>
-                                <button class="btn btn-sm btn-primary">
-                                    <i class="bi bi-cart-plus" onclick="reserveBook(${book.id})"></i> Reservar
-                                </button>
-                            </div>
+                        </div>
+                    <div class="d-flex justify-content-between">
+                         <button class="btn btn-sm btn-outline-primary" onclick="showBookDetails(${book.id})">
+                             <i class="bi bi-info-circle"></i> Detalhes
+                         </button>
+                        <button class="btn btn-sm btn-primary" onclick="reserveBook(${book.id}, 1)">
+                 <i class="bi bi-cart-plus"></i> Reservar
+                        </button>
                         </div>
                     </div>
+                </div>
                 `;
                 
                 container.appendChild(col);
@@ -231,22 +231,27 @@
         }
 
         // Faz o emprestimo do livro
-        async function reserveBook(bookId){
+        async function reserveBook(bookId, usuarioId){
             const book = livros.find(b => b.id === bookId);
+            const usuario = usuarioId;
             if (!book) return;
             
             const doc = {
+                usuario_id: usuario,
                 livro_id: bookId,
-                usuario_id: 1
+                devolvido: false
             }
             
-            await fetch('http://127.0.0.1:8000/emprestimo/', {
+            response = await fetch('http://127.0.0.1:8000/emprestimos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                   },
                 body: JSON.stringify(doc),
             });
+
+            erro = response.json()
+            console.log(erro)
         }
 
         // Retorna o nome do gênero formatado

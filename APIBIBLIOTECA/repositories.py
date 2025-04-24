@@ -95,13 +95,13 @@ class EmprestimoRepository:
         if not livro or not livro.disponivel:
             raise ValueError("Livro indisponível")
         
-        # Verificar se o usuário já pegou o mesmo livro
+        # Verifica se o usuário já pegou o mesmo livro
         emprestimos_usuario = self.buscar_por_idusuario(usuario_id)
         for emp in emprestimos_usuario:
             if emp.livro_id == livro_id and emp.data_devolucao is None:
                 raise ValueError("Usuário já possui este livro emprestado.")
 
-        # Verificar se o usuário já tem mais de dois livros emprestados
+        # Verifica se o usuário já possui mais de dois livros emprestados
         emprestimos_ativos = [emp for emp in emprestimos_usuario if emp.data_devolucao is None]
         if len(emprestimos_ativos) >= 2:
             raise ValueError("Usuário já atingiu o limite de 2 empréstimos.")
@@ -121,7 +121,11 @@ class EmprestimoRepository:
         self.db.commit()
         self.db.refresh(emprestimo)
         return emprestimo
-    
+
+    def listar_todos_pendentes(self) -> list[Emprestimo]:
+        """Listar todos os emprestimos pendentes"""
+        return self.db.query(Emprestimo).filter(Emprestimo.devolvido == False).all()
+
     def buscar_por_idusuario(self, usuario_id: int) -> list[Emprestimo]:
         """Busca emprestimos pelo ID do usuario"""
         return self.db.query(Emprestimo).filter(Emprestimo.usuario_id == usuario_id).all()
@@ -137,6 +141,7 @@ class EmprestimoRepository:
 
         livro = emprestimo.livro
         livro.disponivel = True
+        livro.quantidade += 1
         emprestimo.devolvido = True
         emprestimo.data_devolucao = datetime.now()
 

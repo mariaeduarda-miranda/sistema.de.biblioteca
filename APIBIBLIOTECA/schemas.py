@@ -18,6 +18,12 @@ class LivroSchema(BaseModel):
     class Config:
         from_attributes = True
 
+class UsuarioLogin(BaseModel):
+    matricula: str
+    senha: str
+    
+class Config:
+    from_attributes = True
 
 class UsuarioSchema(BaseModel):
     id: int

@@ -108,21 +108,21 @@ async function verificarSenha(){
 
     } else {
 
-        const doc = {
-            id: alunoAtual.id,
-            nome: alunoAtual.nome,
-            matricula: alunoAtual.matricula,
-            email: alunoAtual.email,
-            senha: senha.value
-        }
-        
-        await fetch('http://127.0.0.1:8000/usuarios/' + alunoAtual.id, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-              },
-            body: JSON.stringify(doc),
-        });
-        window.location.replace("login.html");
+            const doc = {
+                id: alunoAtual.id,
+                nome: alunoAtual.nome,
+                matricula: alunoAtual.matricula,
+                email: alunoAtual.email,
+                senha: senha.value
+            }
+            
+            await fetch('http://127.0.0.1:8000/usuarios/' + alunoAtual.id, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(doc),
+            });
+            window.location.replace("login.html");
     }
 }

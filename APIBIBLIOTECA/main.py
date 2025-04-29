@@ -1,9 +1,9 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Response, Request
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from database import get_db, Base, engine
 from models import Livro, Usuario, Emprestimo
-from schemas import LivroSchema, UsuarioSchema, EmprestimoSchema
+from schemas import LivroSchema, UsuarioSchema, EmprestimoSchema, UsuarioLogin
 from repositories import LivroRepository, EmprestimoRepository, UsuarioRepository
 from typing import List, Optional
 
@@ -136,6 +136,29 @@ def remover_usuario(usuario_id: int, db: Session = Depends(get_db)):
     if not repo.remover(usuario_id):
         raise HTTPException(status_code=404, detail="Usuário não encontrado")
     return {"message": "Usuário removido com sucesso"}
+
+@app.post("/login")
+async def login(response: Response, user_credentials: UsuarioLogin, db: Session = Depends(get_db)):
+    repo = UsuarioRepository(db)
+    usuario = repo.login(user_credentials.matricula, user_credentials.senha)
+
+    if not usuario:
+        raise HTTPException(status_code=401, detail="Matricula ou senha incorretos. Por favor, tente novamente")
+
+    response.set_cookie(key="user_id", value=str(usuario.id), httponly=True, samesite="lax", path="/", secure=False) 
+    return {"message": "Login bem-sucedido", "user_id": usuario.id}
+
+@app.get("/me")
+async def pegar_id_do_usuario(request: Request):
+    id_usuario_cookie = request.cookies.get("user_id")
+    if not id_usuario_cookie:
+        raise HTTPException(status_code=401, detail="Não autenticado")
+    return {"user_id": int(id_usuario_cookie)}
+
+@app.post("/logout")
+async def logout(response: Response):
+    response.delete_cookie(key="user_id")
+    return {"message": "Logout bem-sucedido"}
 
 
 if __name__ == "__main__":

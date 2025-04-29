@@ -1,7 +1,8 @@
 (async () => {
+
      // Base de dados de livros
         let uri = "http://127.0.0.1:8000/livros";
-        const res = await fetch(uri);
+        let res = await fetch(uri);
         const livros = await res.json();
         
 
@@ -86,6 +87,16 @@
             // Paginação
             const startIndex = (currentPage - 1) * booksPerPage;
             const paginatedBooks = filteredBooks.slice(startIndex, startIndex + booksPerPage);
+
+            async function getID(){
+                let uri = "http://127.0.0.1:8000/me";
+                let res = await fetch(uri);
+                const usuario = await res.json();
+
+                console.log(usuario.user_id);
+
+                return usuario.user_id;
+            }
 
             // Renderiza cada livro
             paginatedBooks.forEach(book => {

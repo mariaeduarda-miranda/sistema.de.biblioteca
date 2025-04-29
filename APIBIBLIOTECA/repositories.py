@@ -43,6 +43,10 @@ class UsuarioRepository:
         self.db.commit()
         self.db.refresh(usuario)
         return usuario
+    
+    def buscar_por_matricula(self, usuario_matricula: str) -> Optional[Usuario]:
+        """Busca um usuário pela matricula"""
+        return self.db.query(Usuario).filter(Usuario.matricula == usuario_matricula).first()
 
     def buscar_por_id(self, usuario_id: int) -> Optional[Usuario]:
         """Busca um usuário pelo ID"""
@@ -84,6 +88,13 @@ class UsuarioRepository:
             self.db.commit()
             self.db.refresh(usuario)
         return usuario
+    
+    def login(self, matricula: str, senha: str) -> Optional[Usuario]:
+        usuario = self.buscar_por_matricula(matricula)
+
+        if usuario and usuario.senha == senha:
+            return usuario
+        return None
 
 class EmprestimoRepository:
     def __init__(self, db: Session):

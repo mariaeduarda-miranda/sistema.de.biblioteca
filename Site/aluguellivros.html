@@ -52,7 +52,7 @@
       <div class="container" data-aos="fade-up">
         <div class="section-header text-center">
           <h2>Aluguel de Livros</h2>
-          <p>Confira os livros atualmente alugados e o histórico de cada aluno</p>
+          <p>Confira seu histórico de livros!</p>
         </div>
 
         <div class="card">
@@ -104,33 +104,39 @@
   <script>
     async function fetchRentedBooks() {
       const token = 'seu_token_de_acesso_aqui'; // Substitua pelo token de acesso do usuário logado
-      const response = await fetch('/rented_books/', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
+      let response = await fetch('http://127.0.0.1:8000/emprestimos/1');
       const rentedBooks = await response.json();
+
+      let response2 = await fetch('http://127.0.0.1:8000/livros');
+      const allBooks = await response2.json();
+
       const currentBooksList = document.getElementById('livros-atuais');
       const pastBooksList = document.getElementById('livros-jaalugados');
+      console.log(rentedBooks)
 
-      rentedBooks.forEach(book => {
+      rentedBooks.forEach(emprestimo => {
+        const livro = allBooks.find(book => book.id === emprestimo.livro_id);
+
         const listItem = document.createElement('div');
         listItem.className = 'col';
         listItem.innerHTML = `
-          <div class="card h-100 text-center border">
+          <div class="card livro-card h-100">
+            <img src="${livro.capa}" class="card-img-top" alt="${livro.titulo}">
             <div class="card-body">
-              <h5 class="card-title">${book.title}</h5>
-              <p class="card-text">Aluno: ${book.user.username}</p>
+              <h5 class="card-title">${livro.titulo}</h5>
+              <p class="card-text text-muted">${livro.autor}</p>
             </div>
           </div>
         `;
-        if (book.is_current) {
+
+        if (emprestimo.devolvido == false) {
           currentBooksList.appendChild(listItem);
         } else {
           pastBooksList.appendChild(listItem);
         }
       });
     }
+
 
     fetchRentedBooks();
   </script>
